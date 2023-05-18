@@ -5,7 +5,7 @@ import Footer from '../Page/Shared/Footer/Footer';
 
 const Main = () => {
     return (
-        <div>
+        <div className='container md:mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
