@@ -3,6 +3,15 @@ import Navbar from '../Shared/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+    const handleRegister = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password)
+    }
     return (
         <div>
         <Navbar></Navbar>
@@ -16,7 +25,7 @@ const Register = () => {
                         <h1 className="text-5xl text-center font-bold">Register now!</h1>
                     </div>
 
-                    <form className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                    <form onSubmit={handleRegister} className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">

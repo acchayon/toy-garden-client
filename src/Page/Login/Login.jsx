@@ -3,6 +3,13 @@ import Navbar from '../Shared/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const handleLogin = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+    }
     return (
         <div>
             <Navbar></Navbar>
@@ -16,7 +23,7 @@ const Login = () => {
                             <h1 className="text-5xl text-center font-bold">Login now!</h1>
                         </div>
 
-                        <form className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                        <form onSubmit={handleLogin} className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                             <div className="card-body">
                                 <div className="form-control">
                                     <label className="label">
