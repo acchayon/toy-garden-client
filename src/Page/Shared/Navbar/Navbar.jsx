@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -12,13 +24,17 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li tabIndex={0}>
-                            <a className="justify-between">
-                                All Toys
-                                
-                            </a>
-                            
+                            <Link to='/alltoy' className="justify-between">All Toys  </Link>
                         </li>
+                        {user && <>
+                            <li><Link to='/mytoys'>My Toys</Link></li>
+                            <li><Link to='/addtoy'>Add A Toy</Link></li>
+                        </>}
                         <li><Link to='/blog'>Blog</Link></li>
+                        {user &&
+                            <li>
+                                {user?.email}
+                            </li>}
                     </ul>
                 </div>
                 <img className='md:w-20 w-2/12  rounded-full' src="https://i.ibb.co/S5GV9GT/0e84360419c875fb2fda5739613309d2-removebg-preview.png" alt="" />
@@ -28,16 +44,18 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to='/'>Home</Link></li>
                     <li tabIndex={0}>
-                        <a>
-                            All Toys
-                        </a>
-                       
+                        <Link to='/alltoy'>All Toys</Link>
                     </li>
+                    {user && <>
+                            <li><Link to='/mytoys'>My Toys</Link></li>
+                            <li><Link to='/addtoy'>Add A Toy</Link></li>
+                        </>}
                     <li><Link to='/blog'>Blog</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn">Login</Link>
+                {user ? <button onClick={handleLogOut} className="btn">Logout</button> :
+                    <Link to='/login' className="btn">Login</Link>}
             </div>
         </div>
     );
