@@ -23,7 +23,7 @@ const ToyCard = ({ toy }) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions justify-start">
-                    <button className="btn btn-outline">View Details <FaArrowRight></FaArrowRight></button>
+                    <button className="btn  btn-outline">View Details <FaArrowRight></FaArrowRight></button>
                 </div>
             </div>
         </div >

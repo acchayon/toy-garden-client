@@ -35,6 +35,11 @@ const Navbar = () => {
                             <li>
                                 {user?.email}
                             </li>}
+                        {user ? <div className="avatar">
+                            <div className="w-24 rounded-full">
+                                <img src={user?.photoURL} />
+                            </div>
+                        </div> : ''}
                     </ul>
                 </div>
                 <img className='md:w-20 w-2/12  rounded-full' src="https://i.ibb.co/S5GV9GT/0e84360419c875fb2fda5739613309d2-removebg-preview.png" alt="" />
@@ -47,10 +52,20 @@ const Navbar = () => {
                         <Link to='/alltoy'>All Toys</Link>
                     </li>
                     {user && <>
-                            <li><Link to='/mytoys'>My Toys</Link></li>
-                            <li><Link to='/addtoy'>Add A Toy</Link></li>
-                        </>}
+                        <li><Link to='/mytoys'>My Toys</Link></li>
+                        <li><Link to='/addtoy'>Add A Toy</Link></li>
+                    </>}
                     <li><Link to='/blog'>Blog</Link></li>
+                    {user &&
+                        <li>
+                            {user?.email}
+                        </li>}
+
+                    {user ? <div className="avatar">
+                        <div className="w-24 rounded-full">
+                            <img src={user?.photoURL} />
+                        </div>
+                    </div> : ''}
                 </ul>
             </div>
             <div className="navbar-end">
