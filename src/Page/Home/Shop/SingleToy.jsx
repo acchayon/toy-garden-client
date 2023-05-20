@@ -14,7 +14,8 @@ const SingleToy = () => {
                 <figure><img className='w-96' src={picture} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-bold">Seller Name: {seller_name}</h2>
-                    <p className='text-xl font-semibold'>{description}</p>
+                    <p className='text-xl font-semibold'>Description: {description}</p>
+                    <p className='text-xl font-semibold'>Email: {seller_email}</p>
                     <p className='text-2xl font-bold'>Available Products: {quantity_available}+</p>
                     <div className='flex'>
                     <p className='text-1xl'>Ratings: {rating}

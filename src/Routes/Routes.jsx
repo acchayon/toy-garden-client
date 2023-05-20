@@ -25,26 +25,38 @@ const router = createBrowserRouter([
         element: <Blog></Blog>
       },
       {
-        path: '/toy/:id',
-        element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
-      }
-    ]
-  },
-  {
-    path: '/allToy',
-    element: <AllToy></AllToy>,
-    children: [
-      {
-        path: 'mytoy',
-        element: <MyToy></MyToy>
+        path: '/allToy',
+        element: <AllToy></AllToy>
       },
       {
-        path: 'addtoy',
-        element: <AddToy></AddToy>
+        path: '/mytoy',
+        element: <PrivateRoute><MyToy></MyToy></PrivateRoute>
+      },
+      {
+        path: '/addtoy',
+        element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
+      },
+      {
+        path: '/toy/:id',
+        element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
       }
     ]
   },
+  // {
+  //   path: '/allToy',
+  //   element: <AllToy></AllToy>,
+  //   children: [
+  //     {
+  //       path: 'mytoy',
+  //       element: <MyToy></MyToy>
+  //     },
+  //     {
+  //       path: 'addtoy',
+  //       element: <AddToy></AddToy>
+  //     }
+  //   ]
+  // },
   {
     path: '/login',
     element: <Login></Login>

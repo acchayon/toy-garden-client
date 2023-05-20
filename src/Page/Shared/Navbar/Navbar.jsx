@@ -27,7 +27,7 @@ const Navbar = () => {
                             <Link to='/alltoy' className="justify-between">All Toys  </Link>
                         </li>
                         {user && <>
-                            <li><Link to='/mytoys'>My Toys</Link></li>
+                            <li><Link to='/mytoy'>My Toys</Link></li>
                             <li><Link to='/addtoy'>Add A Toy</Link></li>
                         </>}
                         <li><Link to='/blog'>Blog</Link></li>
@@ -52,7 +52,7 @@ const Navbar = () => {
                         <Link to='/alltoy'>All Toys</Link>
                     </li>
                     {user && <>
-                        <li><Link to='/mytoys'>My Toys</Link></li>
+                        <li><Link to='/mytoy'>My Toys</Link></li>
                         <li><Link to='/addtoy'>Add A Toy</Link></li>
                     </>}
                     <li><Link to='/blog'>Blog</Link></li>
