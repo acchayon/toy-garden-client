@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const ToyCard = ({ toy }) => {
-    const [ratings, setRatings] = useState(0)
-    const { name, price, rating, picture, description } = toy;
+    // const [ratings, setRatings] = useState(0)
+    const {_id, name, price, rating, picture, description } = toy;
     return (
         <div className="card w-full bg-base-100 hover:bg-slate-300 shadow-xl p-5">
             <figure><img className='w-auto h-52' src={picture} alt="Shoes" /></figure>
@@ -23,7 +24,7 @@ const ToyCard = ({ toy }) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions justify-start">
-                    <button className="btn  btn-outline">View Details <FaArrowRight></FaArrowRight></button>
+                    <Link to={`/toy/${_id}`}><button className="btn btn-outline">View Details <FaArrowRight></FaArrowRight></button></Link>
                 </div>
             </div>
         </div >

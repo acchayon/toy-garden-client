@@ -62,7 +62,7 @@ const Navbar = () => {
                         </li>}
 
                     {user ? <div className="avatar">
-                        <div className="w-24 rounded-full">
+                        <div className="w-20 rounded-full">
                             <img src={user?.photoURL} />
                         </div>
                     </div> : ''}
