@@ -44,24 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/toy/:id',
         element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+        loader: ({ params }) => fetch(`https://toy-garden-server-chi.vercel.app/toys/${params.id}`)
       }
     ]
   },
-  // {
-  //   path: '/allToy',
-  //   element: <AllToy></AllToy>,
-  //   children: [
-  //     {
-  //       path: 'mytoy',
-  //       element: <MyToy></MyToy>
-  //     },
-  //     {
-  //       path: 'addtoy',
-  //       element: <AddToy></AddToy>
-  //     }
-  //   ]
-  // },
   {
     path: '/login',
     element: <Login></Login>

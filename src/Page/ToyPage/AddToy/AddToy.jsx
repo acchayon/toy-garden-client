@@ -8,7 +8,7 @@ const AddToy = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch('http://localhost:5000/addtoy', {
+        fetch('https://toy-garden-server-chi.vercel.app/addtoy', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(data)
@@ -22,9 +22,9 @@ const AddToy = () => {
     
 
     return (
-        <div>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 items-center'>
             <div>
-                
+                <img className='w-4/5' src="https://i.ibb.co/3FpF2r8/images-2.jpg" alt="" />
             </div>
                 
             <form className='space-y-5 my-10' onSubmit={handleSubmit(onSubmit)}>

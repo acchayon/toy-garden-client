@@ -4,12 +4,12 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const UpdateToy = () => {
     // const {name} = mytoy;
-    const {user} = useContext(AuthContext);
+    // const {user} = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
 
-        fetch(`http://localhost:5000/updatetoy/${data?._id}`,{
+        fetch(`https://toy-garden-server-chi.vercel.app/toys/${data?._id}`,{
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(data)
@@ -19,7 +19,7 @@ const UpdateToy = () => {
             console.log(data)
         })
 
-        // fetch('http://localhost:5000/addtoy', {
+        // fetch('https://toy-garden-server-chi.vercel.app/addtoy', {
         //     method: 'POST',
         //     headers: {'content-type': 'application/json'},
         //     body: JSON.stringify(data)
