@@ -6,6 +6,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 const SingleToy = () => {
     const toy = useLoaderData();
+    console.log(toy)
     const { name, price, rating, view_details, seller_name, seller_email, quantity_available, description, picture } = toy;
     return (
         <div>

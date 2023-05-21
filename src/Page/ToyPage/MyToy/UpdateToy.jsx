@@ -2,14 +2,15 @@ import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Providers/AuthProvider';
 
-
-const AddToy = () => {
-    const {user} = useContext(AuthContext)
+const UpdateToy = () => {
+    // const {name} = mytoy;
+    const {user} = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch('http://localhost:5000/addtoy', {
-            method: 'POST',
+
+        fetch(`http://localhost:5000/updatetoy/${data?._id}`,{
+            method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(data)
         })
@@ -17,44 +18,36 @@ const AddToy = () => {
         .then(data => {
             console.log(data)
         })
-    };
 
-    
+        // fetch('http://localhost:5000/addtoy', {
+        //     method: 'POST',
+        //     headers: {'content-type': 'application/json'},
+        //     body: JSON.stringify(data)
+        // })
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log(data)
+        // })
+    };
 
     return (
         <div>
-            <div>
-                
-            </div>
-                
-            <form className='space-y-5 my-10' onSubmit={handleSubmit(onSubmit)}>
+                <h2>update</h2>
+                <form className='space-y-5 my-10' onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
                 <label htmlFor="name">Name: </label>
-                <input className='p-2' defaultValue="Name" {...register("name")} />
+                <input className='p-2' defaultValue="name" {...register("name")} />
                 <br />
                 <label htmlFor="price">Price: </label>
                 <input className='p-2' defaultValue="$" {...register("price")} />
                 <br />
-                <label htmlFor="rating">Ratings: </label>
-                <input className='p-2' defaultValue="4.6" {...register("rating")} />
-                <br />
-                <label htmlFor="sub-category">sub-Category: </label>
-                <input className='p-2' defaultValue="teddy" {...register("sub_category")} />
-                <br />
+                
+                
                 <label htmlFor="quantity">Avaliable Quantity: </label>
                 <input className='p-2' defaultValue="10+" {...register("quantity_available")} />
                 <br />
                 <label htmlFor="details">Details</label>
                 <input className='p-2' defaultValue="view_details" {...register("view-details")} />
-                <br />
-                <label htmlFor="seller-name">Seller Name: </label>
-                <input className='p-2' defaultValue="seller-name" {...register("seller_name")} />
-                <br />
-                <label htmlFor="seller-email">Seller email: </label>
-                <input className='p-2' defaultValue={user?.email} {...register("seller_email")} />
-                <br />
-                <label htmlFor="photo">PhotoURL</label>
-                <input className='p-2' defaultValue="photo url" {...register("picture")} />
                 <br />
                 <label htmlFor="description">Description: </label>
                 <input className='p-2' defaultValue="add something" {...register("description")} />
@@ -74,4 +67,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default UpdateToy;
